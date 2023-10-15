@@ -1,10 +1,47 @@
 "use client";
 import React, {useTransition, useState} from 'react';
 import Image from 'next/image';
+import TabButton from './TabButton';
+
+const TAB_DATA = [
+    {
+        title: "Skills",
+        id: "skills",
+        content: (
+            <ul className="list-disc pl-2">
+                <li>Node.js</li>
+                <li>Python</li>
+                <li>React</li>
+                <li>Rust</li>
+                <li>C++</li>
+            </ul>
+        )
+    },
+    {
+        title: "Education",
+        id: "education",
+        content: (
+            <ul className="list-disc pl-2">
+                <li>University of Florida</li>
+                <li>Bachelors in Computer Engineering</li>
+                <li>Minor in Mathematics</li>
+            </ul>
+        )
+    },
+    {
+        title: "Certifications",
+        id: "certifications",
+        content: (
+            <ul className="list-disc pl-2">
+                <li>Intro to programming using Java</li>
+            </ul>
+        )
+    }
+]
 
 const AboutSection = () => {
   const [tab, setTab] = useState("skills");
-  const [startTransition, isPending] = useTransition();
+  const [isPending, startTransition] = useTransition();
 
   const handleTabChange = (id) => {
     startTransition(() => {
@@ -14,18 +51,30 @@ const AboutSection = () => {
   
   return (
     <section className="text-white">
-        <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16">
+        <div className="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
         <Image src="/images/about-image.png" width={500} height={500}/>
-        <div>
+        <div className="mt-4 md:mt-0 text-left flex flex-col h-full">
             <h2 className="text-4xl font-bold text-white mb-4">About Me</h2>
             <p className="text-base lg:text-lg">
-                Blaw blaw blaw
+                I am a Computer Enginerering student at the University of Florida with an expected graduation date of May 2026
+                I am familiar with C#, Rust, Python, C++, Java, and HTML. Some of my passions are CS education, which I am 
+                researching, along with machine learning.
             </p>
             <div classname="flex flew-row mt-8">
-                <span className="mr-3 font-semibold hover:text-white text-[#ADB7BE] border-b border-purple-500">Skills</span>
-                <span>Education</span>
-                <span>Experience</span>
+                <TabButton 
+                selectTab={() => handleTabChange("skills")} 
+                active={tab=="skills"}>
+                    {" "}Skills{" "}</TabButton>
+                <TabButton 
+                selectTab={() => handleTabChange("education")} 
+                active={tab=="education"}>
+                    {" "}Education{" "}</TabButton>
+                <TabButton 
+                selectTab={() => handleTabChange("certifications")} 
+                active={tab=="certifications"}>
+                    {" "}Certifications{" "}</TabButton>
             </div>
+            <div className="mt-8">{TAB_DATA.find((t) => t.id === tab).content}</div>
         </div>
         </div>
     </section>

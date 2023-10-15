@@ -20,9 +20,9 @@ const HeroSection = () => {
                         // Same substring at the start will only be typed out once, initially
                         'Alex',
                         1000, // wait 1s before replacing "Mice" with "Hamsters"
-                        'Backend Developer',
+                        'A Backend Developer',
                         1000,
-                        'CS Education Researcher',
+                        'A CS Education Researcher',
                         1000,
                         
                     ]}
@@ -32,11 +32,7 @@ const HeroSection = () => {
                     />
                 </h1>
                 <p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl">
-                Lorem Ipsum is simply dummy text 
-                of the printing and typesetting industry. 
-                Lorem Ipsum has been the industry's standard dummy text 
-                ever since the 1500s, when an unknown printer took a galley of type and 
-                scrambled it to make a type specimen book.
+                I am Alex, a Computer Engineer at the University of Florida who is also minoring in mathematics. Check about me and projects for more information, and contact if desired.
                 </p>
                 <div>
                     <button className="px-6 py-3 rounded-full mr-4 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 hover:bg-slate-200 text-white">
